@@ -6,7 +6,7 @@
         setupDiscordSdk,
     } from "./lib/discord";
     import { loadImage } from "./lib/image";
-    import voiceIconUrl from "./assets/voice_icon.png";
+    import voiceIconUrl from "./assets/png/voice_icon.png";
     import Loading from "./Loading.svelte";
     import Central from "./Central.svelte";
     import {
