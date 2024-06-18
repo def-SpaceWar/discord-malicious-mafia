@@ -4,14 +4,16 @@
   "version": "0.1.0",
   "description": "A minimal starter project using embedded-app-sdk",
   "main": "index.js",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "pnpm run --filter \"./packages/**\" --parallel dev",
+    "dev": "bun --filter \"./packages/**\" dev",
     "tunnel": "cloudflared tunnel --url http://localhost:3000"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@discord/embedded-app-sdk": "latest",
     "express": "^4.19.2"
   },
   "devDependencies": {
