@@ -6,3 +6,5 @@ build
 dist
 .env
 bun.lockb
+replit.nix
+.replit
