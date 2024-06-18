@@ -1,5 +1,19 @@
+@font-face{
+  font-family: "Fira Code";
+  src: url('./assets/ttf/FiraCode.ttf');
+}
+
+@font-face{
+  font-family: "Special Elite";
+  src: url('./assets/ttf/SpecialElite.ttf');
+}
+
 * {
 	transition: color background-color 0.1s linear;
+
+	/* Fonts */
+	--default-font: "Special Elite", sans;
+	--mono-font: "Fira Code", monospace;
 
 	/* Colors */
 	--fg: #CCEEFF;
@@ -38,6 +52,10 @@ body {
 	margin: 0;
     background-color: var(--bg);
     color: var(--fg);
-    font-family: sans;
+    font-family: var(--default-font);
 	font-size: 1.5vw;
+}
+
+pre, code {
+    font-family: var(--mono-font);
 }

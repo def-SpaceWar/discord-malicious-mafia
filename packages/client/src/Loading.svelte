@@ -29,7 +29,7 @@
 
     #loader {
         position: absolute;
-        left: 55.5vw;
+        left: 54vw;
         top: 48vh;
         border: 4vh solid var(--light-bg);
         border-top: 4vh solid var(--yellow);

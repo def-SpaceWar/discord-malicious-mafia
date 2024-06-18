@@ -14,26 +14,24 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static(clientBuildPath));
 }
 
-// Fetch token from developer portal and return to the embedded app
 app.post('/api/token', async (req: Request, res: Response) => {
-    const response = await fetchAndRetry(`https://discord.com/api/oauth2/token`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
+    const response = await (await fetchAndRetry(
+        `https://discord.com/api/oauth2/token`,
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({
+                client_id: process.env.VITE_CLIENT_ID,
+                client_secret: process.env.CLIENT_SECRET,
+                grant_type: 'authorization_code',
+                code: req.body.code,
+            }),
         },
-        body: new URLSearchParams({
-            client_id: process.env.VITE_CLIENT_ID,
-            client_secret: process.env.CLIENT_SECRET,
-            grant_type: 'authorization_code',
-            code: req.body.code,
-        }),
-    });
+    )).json() as { access_token: string };
 
-    const { access_token } = (await response.json()) as {
-        access_token: string;
-    };
-
-    res.send({ access_token });
+    res.send({ access_token: response.access_token });
 });
 
 app.listen(port, () => {

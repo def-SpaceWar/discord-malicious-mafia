@@ -1,3 +1,5 @@
+import './assets/ttf/FiraCode.ttf';
+import './assets/ttf/SpecialElite.ttf';
 import './app.css'
 import App from './App.svelte'
 
