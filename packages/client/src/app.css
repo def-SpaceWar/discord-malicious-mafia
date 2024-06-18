@@ -1,4 +1,7 @@
 * {
+	transition: color background-color 0.1s linear;
+
+	/* Colors */
 	--fg: #CCEEFF;
 	--dark-fg: #AACCEE;
 	--light-fg: #FFFFFF;

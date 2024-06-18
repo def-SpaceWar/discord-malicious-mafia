@@ -1,8 +1,11 @@
-<main>
-    <h1>Loading</h1>
-</main>
+<script lang="ts">
+    import { fade, fly, scale } from "svelte/transition";
+</script>
 
-<div id="loader"></div>
+<main out:fade>
+    <h1 out:fly={{ x: "-10vw", y: 0 }}>Loading</h1>
+    <div id="loader" out:scale></div>
+</main>
 
 <style>
     main {
@@ -33,8 +36,7 @@
         border-radius: 50%;
         width: 20vh;
         height: 20vh;
-        animation: spin 1s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
-        z-index: 2;
+        animation: spin 1.5s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
     }
 
     @keyframes spin {
@@ -42,7 +44,7 @@
             transform: rotate(0deg);
         }
         100% {
-            transform: rotate(720deg);
+            transform: rotate(1080deg);
         }
     }
 </style>
