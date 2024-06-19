@@ -12,6 +12,7 @@
     import {
         debugLog,
         debugInfo,
+        debugError,
         setDebugLog,
         setDebugInfo,
         setDebugError,
@@ -59,9 +60,16 @@
             debugInfo("SDK setup finished!");
 
             await Promise.all([
-                loadImage(guildImage, await getGuildImageUrl()),
-                (async () =>
-                    (channelName.innerText = await getChannelName()))(),
+                loadImage(guildImage, await getGuildImageUrl()).catch(e => {
+                    debugError("Image may contain errors!");
+                    guildImage.remove();
+                }),
+                (async () => await getChannelName()
+                    .then(v => channelName.innerText = v)
+                    .catch(e => {
+                        debugError("Channel name may contain errors!")
+                        channelName.remove();
+                    }))(),
             ]);
             debugLog("Image + channel text loaded.");
 
